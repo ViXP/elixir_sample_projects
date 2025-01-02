@@ -1,5 +1,20 @@
+/*
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
+*/
 /* This file is for your main application CSS */
+@import "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+.help-block {
+  color: red;
+  text-transform: capitalize;
+  position: absolute;
+  top: 30px;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+}

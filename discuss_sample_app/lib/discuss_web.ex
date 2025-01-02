@@ -21,7 +21,7 @@ defmodule DiscussWeb do
 
   def router do
     quote do
-      use Phoenix.Router, helpers: false
+      use Phoenix.Router, helpers: true
 
       # Import common connection and controller functions to use in pipelines
       import Plug.Conn
@@ -44,7 +44,10 @@ defmodule DiscussWeb do
 
       use Gettext, backend: DiscussWeb.Gettext
 
+      alias Discuss.Repo
+
       import Plug.Conn
+      import DiscussWeb.Router.Helpers
 
       unquote(verified_routes())
     end
@@ -85,6 +88,7 @@ defmodule DiscussWeb do
       # Translation
       use Gettext, backend: DiscussWeb.Gettext
 
+      import DiscussWeb.Router.Helpers
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components

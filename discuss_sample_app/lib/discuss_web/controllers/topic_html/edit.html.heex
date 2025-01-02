@@ -1,0 +1,6 @@
+<.form :let={f} for={@changeset} action={topic_path(@conn, :update, @topic)}>
+  <div class="form-group">
+    <.input field={f[:title]} placeholder="Title" class="form-control" />
+  </div>
+  <input type="submit" value="Update Topic" class="btn btn-primary" />
+</.form>
