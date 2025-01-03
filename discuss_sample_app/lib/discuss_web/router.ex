@@ -1,5 +1,4 @@
 defmodule DiscussWeb.Router do
-  alias Hex.API.Auth
   use DiscussWeb, :router
 
   pipeline :browser do
