@@ -1,6 +1,21 @@
 <nav class="light-blue">
   <div class="nav-wrapper container">
     <a href="/" class="brand-logo:href">Discussions</a>
+    <ul class="right">
+      <%= if @conn.assigns[:user] do %>
+      <li>
+        <.link href={auth_path(@conn, :signout)} method="delete">
+          Logout
+        </.link>
+      </li>
+      <% else %>
+      <li>
+        <.link href={auth_path(@conn, :request, :github)}>Sign in with
+          GitHub
+        </.link>
+      </li>
+      <% end %>
+    </ul>
   </div>
 </nav>
 <main class="px-4 py-20 sm:px-6 lg:px-8">

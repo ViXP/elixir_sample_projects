@@ -1,4 +1,5 @@
 defmodule DiscussWeb.Router do
+  alias Hex.API.Auth
   use DiscussWeb, :router
 
   pipeline :browser do
@@ -8,6 +9,7 @@ defmodule DiscussWeb.Router do
     plug :put_root_layout, html: {DiscussWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug DiscussWeb.Plugs.SetUser
   end
 
   pipeline :api do
@@ -22,6 +24,7 @@ defmodule DiscussWeb.Router do
 
   scope "/auth", DiscussWeb do
     pipe_through :browser
+    delete "/signout", AuthController, :signout
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback
   end
