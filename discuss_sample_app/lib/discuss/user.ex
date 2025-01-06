@@ -7,6 +7,7 @@ defmodule Discuss.User do
     field :provider, :string
     field :email, :string
     has_many :topics, Discuss.Topic
+    has_many :comments, Discuss.Comment
 
     timestamps(type: :utc_datetime)
   end

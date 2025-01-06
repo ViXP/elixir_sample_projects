@@ -13,9 +13,13 @@ defmodule DiscussWeb.Plugs.SetUser do
 
     cond do
       user = user_id && Repo.get(User, user_id) ->
-        assign(conn, :user, user)
+        conn
+        |> assign(:user, user)
+        |> assign(:user_token, Phoenix.Token.sign(conn, "user socket", user.id))
       true ->
-        assign(conn, :user, nil)
+        conn
+        |> assign(:user, nil)
+        |> assign(:user_token, nil)
     end
   end
 end
