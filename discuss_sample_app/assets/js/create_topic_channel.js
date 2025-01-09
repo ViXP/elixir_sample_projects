@@ -83,8 +83,12 @@ function renderComments(comments) {
 }
 
 function _commentTemplate(comment) {
+  const email = comment.user && comment.user.email;
   return `
-    <li class="collection-item comment">${comment.content}</li>
+    <li class="collection-item comment">
+      ${comment.content}
+      <div class="secondary-content">${email}</div>
+    </li>
   `;
 }
 
