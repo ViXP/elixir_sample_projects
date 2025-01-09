@@ -1,11 +1,18 @@
 defmodule DiscussWeb.UserSocket do
   use Phoenix.Socket
 
+  alias Discuss.{Repo, User}
+
   channel "comments:*", DiscussWeb.CommentsChannel
 
   @impl true
-  def connect(_params, socket, _connect_info) do
-    {:ok, socket}
+  def connect(%{"token" => token}, socket, _connect_info) do
+    case Phoenix.Token.verify(socket, "user socket", token, max_age: 86400) do
+      {:ok, user_id} ->
+        {:ok, assign(socket, :user, Repo.get!(User, user_id))}
+      {:error, _} ->
+        {:ok, socket}
+    end
   end
 
   # Socket IDs are topics that allow you to identify all sockets for a given user:
