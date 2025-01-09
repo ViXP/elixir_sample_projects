@@ -2,7 +2,9 @@
 
 <div class="input-field">
   <textarea name="" id="" class="materialize-textarea new-comment"></textarea>
-  <button class="btn add-comment">Add Comment</button>
+  <%= if @conn.assigns.user_token do %>
+    <button class="btn add-comment">Add Comment</button>
+  <% end %>
   <ul class="collection comments"></ul>
 </div>
 
