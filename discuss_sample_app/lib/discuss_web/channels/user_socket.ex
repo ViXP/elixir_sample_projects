@@ -1,7 +1,7 @@
 defmodule DiscussWeb.UserSocket do
   use Phoenix.Socket
 
-  alias Discuss.{Repo, User}
+  alias Discuss.{Repo, Accounts.User}
 
   channel "comments:*", DiscussWeb.CommentsChannel
 
